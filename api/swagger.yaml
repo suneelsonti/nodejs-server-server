@@ -1,0 +1,75 @@
+---
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Blogs API"
+host: "localhost:3000"
+tags:
+- name: "BlogService"
+schemes:
+- "http"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+paths:
+  /api/v1/articles:
+    get:
+      tags:
+      - "BlogService"
+      operationId: "apiV1ArticlesGET"
+      parameters: []
+      responses:
+        "200":
+          description: "List of articles"
+          schema:
+            $ref: "#/definitions/Return all articles"
+      x-swagger-router-controller: "BlogService"
+    post:
+      tags:
+      - "BlogService"
+      operationId: "apiV1ArticlesPOST"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/CreateArticleRequest"
+      responses:
+        "200":
+          description: "Create a new article."
+          schema:
+            $ref: "#/definitions/Article"
+      x-swagger-router-controller: "BlogService"
+definitions:
+  Article:
+    type: "object"
+    properties:
+      title:
+        type: "string"
+      body:
+        type: "string"
+    example:
+      title: "title"
+      body: "body"
+  CreateArticleRequest:
+    type: "object"
+    properties:
+      title:
+        type: "string"
+      body:
+        type: "string"
+    example:
+      title: "title"
+      body: "body"
+  ArticlesList:
+    type: "array"
+    items:
+      $ref: "#/definitions/Article"
+  Return all articles:
+    type: "object"
+    properties:
+      result:
+        $ref: "#/definitions/ArticlesList"
+    example:
+      result: ""
