@@ -10,3 +10,18 @@ spec:
   type: service
   lifecycle: experimental
   owner: user:guest
+  providesApis:
+  - blog-api
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: blog-api
+  description: The Blog's API
+spec:
+  type: openapi
+  lifecycle: experimental
+  owner: user:guest
+  definition:
+    $text: https://github.com/suneelsonti/nodejs-server-server/blob/main/api/swagger.yaml
