@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: Blog-App
+  description: This is a dummy Node.js app
+  tags:
+    - node
+
+spec:
+  type: service
+  lifecycle: experimental
+  owner: user:guest
